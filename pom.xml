@@ -86,7 +86,7 @@
     <repositories>
         <repository>
             <id>atlassian</id>
-            <url>https://maven.atlassian.com/content/repositories/public</url>
+            <url>https://maven.atlassian.com/content/repositories/atlassian-public</url>
         </repository>
     </repositories>
 </project>

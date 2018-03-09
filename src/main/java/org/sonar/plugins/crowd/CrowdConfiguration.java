@@ -30,7 +30,10 @@ public class CrowdConfiguration implements ServerExtension {
   static final String KEY_CROWD_URL = "crowd.url";
   static final String KEY_CROWD_APP_NAME = "crowd.application";
   static final String KEY_CROWD_APP_PASSWORD = "crowd.password";
+  static final String COOKIE_DOMAIN = "cookie.domain";
   static final String FALLBACK_NAME = "sonar";
+  static final String COOKIE_DOMAIN_FALLBACK = "";
+  static final String APPLICATION_LOGIN_URL = "application.login.url";
   private final Settings settings;
 
   /**
@@ -67,6 +70,13 @@ public class CrowdConfiguration implements ServerExtension {
   }
 
   /**
+   * The name of the cookie the application uses after authentication.<br />
+   */
+  public String getCookieDomain() {
+    return get(COOKIE_DOMAIN, settings, COOKIE_DOMAIN_FALLBACK);  
+  }
+
+  /**
    * The password that the application will use when authenticating with the Crowd server.<br />
    * Uses the settings key {@value #KEY_CROWD_APP_PASSWORD}
    */
@@ -80,5 +90,9 @@ public class CrowdConfiguration implements ServerExtension {
    */
   public String getCrowdUrl() {
     return getAndValidate(KEY_CROWD_URL, settings);
+  }
+
+  public String getApplicationLoginUrl() {
+    return getAndValidate(APPLICATION_LOGIN_URL, settings);
   }
 }

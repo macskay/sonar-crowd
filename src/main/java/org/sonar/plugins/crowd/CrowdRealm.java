@@ -61,7 +61,7 @@ public class CrowdRealm extends SecurityRealm {
     // The password that the application will use when authenticating with the Crowd server.
     crowdProperties.setProperty("application.password", configuration.getCrowdApplicationPassword());
     // Crowd will redirect the user to this URL if their authentication token expires or is invalid due to security restrictions.
-    // crowdProperties.setProperty("application.login.url", "");
+    crowdProperties.setProperty("application.login.url", configuration.getApplicationLoginUrl());
     // The URL to use when connecting with the integration libraries to communicate with the Crowd server.
     // crowdProperties.setProperty("crowd.server.url", "");
     // The URL used by Crowd to create the full URL to be sent to users that reset their passwords.
@@ -75,6 +75,8 @@ public class CrowdRealm extends SecurityRealm {
     crowdProperties.setProperty("session.validationinterval", "1");
     // The session key to use when storing a Date value of the user's last authentication.
     crowdProperties.setProperty("session.lastvalidation", "session.lastvalidation");
+    // The Cookie Domain
+    crowdProperties.setProperty("cookie.domain", configuration.getCookieDomain());
     // Perhaps more things to let users to configure in the future
     // (see https://confluence.atlassian.com/display/CROWD/The+crowd.properties+file)
     ClientProperties clientProperties = ClientPropertiesImpl.newInstanceFromProperties(crowdProperties);
